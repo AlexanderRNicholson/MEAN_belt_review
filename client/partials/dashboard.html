@@ -1,0 +1,31 @@
+<h3>Dashboard</h3>
+
+<h4>Welcome, {{user.name}}!</h4>
+
+<table>
+  <tr>
+    <th>Category</th>
+    <th>Topic</th>
+    <th>User Name</th>
+    <th>Posts</th>
+  </tr>
+    <tr ng-repeat="topic in topics">
+      <td>{{topic.category}}</td>
+      <td><a href="#!/topic/{{topic._id}}" ng-bind="topic.name"></a></td>
+      <td><a href="#!/user/{{topic._user._id}}" ng-bind="topic._user.name"></a></td>
+      <td>{{topic._answers.length}}</td>
+    </tr>
+</table>
+
+<h4>Add a new Topic</h4>
+<form>
+  <p>Topic:<input type="text" ng-model="newTopic.name"></p>
+  <p>Description:<textarea ng-model="newTopic.description"></textarea></p>
+  <p>Topic:</label><select ng-model="newTopic.category"></p>
+    <option value="Dungeons and Dragons">Dungeons and Dragons</option>
+    <option value="Call of Cthulhu">Call of Cthulhu</option>
+    <option value="World of Darkness">World of Darkness</option>
+    <option value="GURPS">GURPS</option>
+    <option value="Exalted">Exalted</option></select>
+  <button ng-click="addTopic(newTopic)">Enter</button>
+</form>

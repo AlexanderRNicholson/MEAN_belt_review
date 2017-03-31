@@ -1,0 +1,28 @@
+<h2>Look at this topic!</h2>
+
+
+<p>{{showTopic.name}}</p>
+<p>{{showTopic.description}}</p>
+
+<form>
+  <h4>Post your answer here:</h4>
+  <textarea ng-model="newAnswer.content"></textarea>
+  <button ng-click="addAnswer(newAnswer)">Post</button>
+</form>
+
+<ul ng-repeat="answer in showTopic.answers | orderBy: '-createdAt'">
+  <li><a href="#!/user/{{answer._user._id}}" ng-bind="answer._user.name"></a></li>
+  <li>{{answer.content}}</li>
+  <button ng-click="upVote(answer._id, getAnswers)">^</button> {{answer.upvotes}}
+  <button ng-click="downVote(answer._id, getAnswers)">v</button> {{answer.downvotes}}
+  <ul ng-repeat="comment in answer.comments | orderBy: 'createdAt'">
+    <li><a href="#!/user/{{comment._user._id}}" ng-bind="comment._user.name"></a></li>
+    <li>{{comment.content}}</li>
+  </ul>
+    <form>
+      <textarea ng-model="newComment.content"></textarea>
+      <button ng-click="addComment(newComment, answer._id)">Post</button>
+    </form>
+</ul>
+
+<!-- work on addComment, you need to look at the solution to alter your answer model accordingly -->

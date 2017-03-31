@@ -1,0 +1,13 @@
+<h3>Register</h3>
+<p>Hello!</p>
+<p>Please enter your name to join and share your ideas!</p>
+<form>
+  <input type="text" ng-model="newUser.name">
+  <button ng-click="register(newUser)">Enter</button>
+</form>
+<h3>Login</h3>
+<p>Or reenter your name to log back in.</p>
+<form>
+  <input type="text" ng-model="returningUser.name">
+  <button ng-click="login(returningUser)">Enter</button>
+</form>
